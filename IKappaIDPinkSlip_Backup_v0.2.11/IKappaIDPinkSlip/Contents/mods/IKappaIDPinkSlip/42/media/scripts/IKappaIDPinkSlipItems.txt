@@ -1,0 +1,26 @@
+module IKappaIDPinkSlip
+{
+    item BlankPinkSlip
+    {
+        DisplayName = Blank Pink Slip,
+        DisplayCategory = Literature,
+        Weight = 0.1,
+        ItemType = base:normal,
+        Icon = IKappaPinkSlip,
+        StaticModel = EmptyNotebook,
+        WorldStaticModel = EmptyNotebook,
+        Tooltip = Tooltip_IKappaIDPinkSlip_Blank,
+    }
+
+    item PinkSlip
+    {
+        DisplayName = Pink Slip,
+        DisplayCategory = Literature,
+        Weight = 0.1,
+        ItemType = base:normal,
+        Icon = IKappaPinkSlip,
+        StaticModel = EmptyNotebook,
+        WorldStaticModel = EmptyNotebook,
+        Tooltip = Tooltip_IKappaIDPinkSlip_Filled,
+    }
+}

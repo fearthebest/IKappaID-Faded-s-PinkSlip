@@ -1,0 +1,8 @@
+name=IKappaID PinkSlip
+id=IKappaIDPinkSlip
+description=Vehicle ownership as a paper title. Claim a vehicle with a Blank Pink Slip via the V radial: the vehicle is despawned and a filled Pink Slip is issued, holding its full state and stable vehicle UID. Right-click a filled Pink Slip, use the left-side button, or press the configurable hotkey to deploy it. Trade the slip like a normal item; the new holder can register the title. B42.17.
+author=IKappaID
+versionMin=42.0
+poster=poster.png
+icon=icon.png
+modVersion=0.2.11

@@ -1,0 +1,19 @@
+module Base
+{
+    craftRecipe IKappaID_MakeBlankPinkSlip
+    {
+        timedAction = Making,
+        time = 40,
+        Tags = AnySurfaceCraft,
+        category = Literature,
+        inputs
+        {
+            item 1 [Base.SheetPaper2;Base.Notebook;Base.Notepad],
+            item 1 [Base.Pen;Base.PenMultiColor;Base.BluePen;Base.GreenPen;Base.RedPen;Base.PenSpiffo;Base.Pencil;Base.PencilSpiffo] mode:keep,
+        }
+        outputs
+        {
+            item 1 IKappaIDPinkSlip.BlankPinkSlip,
+        }
+    }
+}

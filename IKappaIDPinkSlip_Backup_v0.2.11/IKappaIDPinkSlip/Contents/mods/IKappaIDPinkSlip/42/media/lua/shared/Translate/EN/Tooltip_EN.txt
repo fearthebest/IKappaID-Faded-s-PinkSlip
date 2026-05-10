@@ -1,0 +1,4 @@
+Tooltip_EN = {
+    Tooltip_IKappaIDPinkSlip_Blank = "A blank vehicle title form. Carry one, open the vehicle radial, and claim a nearby vehicle.",
+    Tooltip_IKappaIDPinkSlip_Filled = "A filled vehicle title. Right-click it to deploy the stored vehicle or register ownership after a trade.",
+}
