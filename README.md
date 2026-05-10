@@ -1,2 +1,2 @@
-# Project-Zomboid-Modding
-My Mods for Project Zomboid
+# KappaID & Faded's PinkSlip
+The main mod of PinkSLip.
