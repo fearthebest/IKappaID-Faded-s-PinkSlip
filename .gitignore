@@ -1,0 +1,16 @@
+# OS
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+# Archives (keep sources in git; upload builds separately if needed)
+*.zip
+*.rar
+*.7z
+
+# Editor / IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
