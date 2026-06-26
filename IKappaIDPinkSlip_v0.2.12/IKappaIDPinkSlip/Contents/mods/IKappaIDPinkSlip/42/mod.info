@@ -1,0 +1,8 @@
+name=IKappaID PinkSlip
+id=IKappaIDPinkSlip
+description=Adds a vehicle title system. Claim vehicles into items to store their state and contents. Deploy them back into the world later. Supports trading and inventory storage.
+author=IKappaID
+versionMin=42.0
+poster=poster.png
+icon=icon.png
+modVersion=0.2.12

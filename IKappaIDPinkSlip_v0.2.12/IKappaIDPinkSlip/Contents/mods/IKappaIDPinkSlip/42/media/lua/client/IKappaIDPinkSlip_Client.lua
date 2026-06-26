@@ -21,6 +21,7 @@
 if isServer() then return end
 
 require "IKappaIDPinkSlip_Shared"
+require "IKappaIDPinkSlip_VehicleOps"
 pcall(require, "ISUI/ISButton")
 local M = IKappaPinkSlip
 local safeCall = M.safeCall
@@ -222,6 +223,7 @@ local function addClaimSlice(playerObj)
     if not findBlankSlip(playerObj) then return end
     local vehicle = resolveTargetVehicle(playerObj)
     if not vehicle then return end
+    if M.isRentalTaggedVehicle(vehicle) then return end
     local playerNum = safeCall(function()
         if playerObj.getPlayerNum then return playerObj:getPlayerNum() end
         return 0

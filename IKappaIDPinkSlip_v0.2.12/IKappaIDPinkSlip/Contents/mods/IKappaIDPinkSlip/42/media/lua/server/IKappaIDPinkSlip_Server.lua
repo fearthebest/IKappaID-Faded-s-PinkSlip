@@ -21,6 +21,7 @@
 if isClient() then return end
 
 require "IKappaIDPinkSlip_Shared"
+require "IKappaIDPinkSlip_VehicleOps"
 local M = IKappaPinkSlip
 local tryCall = M.tryCall
 local safeCall = M.safeCall
@@ -366,6 +367,11 @@ local function handleClaim(player, args)
     end
     if not vehicle then
         echo(player, false, "Vehicle not found")
+        return
+    end
+
+    if M.isRentalTaggedVehicle(vehicle) then
+        echo(player, false, "Rental vehicles cannot be claimed as Pink Slips")
         return
     end
 

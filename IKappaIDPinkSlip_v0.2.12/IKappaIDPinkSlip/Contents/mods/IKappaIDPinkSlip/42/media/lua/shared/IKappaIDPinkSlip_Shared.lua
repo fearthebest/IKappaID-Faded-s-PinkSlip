@@ -574,4 +574,138 @@ function M.writeSlipPayload(item, snap, uid, ownerName)
     return true
 end
 
+-- =========================================================================
+-- Loot addon: pick from every loaded vehicle script (vanilla + workshop mods)
+-- =========================================================================
+
+local LOOT_SKIP_NAME_FRAGMENTS = { "Trailer", "Smashed", "Burnt", "Wreck" }
+M._lootVehicleScriptNames = nil
+
+local function lootJavaListSize(list)
+    if not list then return 0 end
+    if list.size then return list:size() end
+    return 0
+end
+
+local function lootJavaListGet(list, index)
+    if list and list.get then return list:get(index) end
+    return nil
+end
+
+function M.getScriptFullNameFromScript(script)
+    if not script then return "" end
+    if script.getFullName then
+        local full = script:getFullName()
+        if full and full ~= "" then return tostring(full) end
+    end
+    if script.getName then
+        return tostring(script:getName() or "")
+    end
+    return ""
+end
+
+function M.isLootEligibleVehicleScriptName(fullName)
+    if not fullName or fullName == "" then return false end
+    for i = 1, #LOOT_SKIP_NAME_FRAGMENTS do
+        if string.find(fullName, LOOT_SKIP_NAME_FRAGMENTS[i], 1, true) then
+            return false
+        end
+    end
+    return true
+end
+
+function M.isLootEligibleVehicleScript(script)
+    if not script then return false, nil end
+    local fullName = M.getScriptFullNameFromScript(script)
+    if not M.isLootEligibleVehicleScriptName(fullName) then
+        return false, nil
+    end
+    if script.getWheelCount then
+        local wheelCount = script:getWheelCount()
+        if wheelCount == nil or wheelCount <= 0 then
+            return false, nil
+        end
+    end
+    return true, fullName
+end
+
+function M.collectLootVehicleScriptNames(forceRefresh)
+    if not forceRefresh and M._lootVehicleScriptNames and #M._lootVehicleScriptNames > 0 then
+        return M._lootVehicleScriptNames
+    end
+
+    local names = {}
+    local seen = {}
+    if getScriptManager then
+        local manager = getScriptManager()
+        if manager and manager.getAllVehicleScripts then
+            local scripts = manager:getAllVehicleScripts()
+            local count = lootJavaListSize(scripts)
+            for index = 0, count - 1 do
+                local script = lootJavaListGet(scripts, index)
+                local ok, fullName = M.isLootEligibleVehicleScript(script)
+                if ok and fullName and not seen[fullName] then
+                    seen[fullName] = true
+                    names[#names + 1] = fullName
+                end
+            end
+        end
+    end
+
+    M._lootVehicleScriptNames = names
+    print("[IKappaIDPinkSlip] loot vehicle pool: " .. tostring(#names) .. " eligible scripts")
+    return names
+end
+
+function M.refreshLootVehicleScriptCache()
+    M._lootVehicleScriptNames = nil
+    return M.collectLootVehicleScriptNames(true)
+end
+
+function M.buildRandomLootSnapshot(allowMap)
+    local names = M.collectLootVehicleScriptNames(false)
+    if not names or #names == 0 then
+        return nil
+    end
+
+    local pool = names
+    if type(allowMap) == "table" then
+        pool = {}
+        for i = 1, #names do
+            local fullName = names[i]
+            if allowMap[fullName] then
+                pool[#pool + 1] = fullName
+            end
+        end
+        if #pool == 0 then
+            return nil
+        end
+    end
+
+    local idx = 1
+    if #pool > 1 then
+        if ZombRand then
+            idx = ZombRand(#pool) + 1
+        else
+            idx = math.random(#pool)
+        end
+    end
+
+    return {
+        schemaVersion = M.SCHEMA_VERSION,
+        capturedAt = (os and os.time and os.time()) or 0,
+        scriptName = pool[idx],
+        skinIndex = -1,
+        hasKey = false,
+        parts = {},
+        modData = {},
+    }
+end
+
+if Events and Events.OnGameStart and Events.OnGameStart.Add then
+    Events.OnGameStart.Add(function()
+        M._lootVehicleScriptNames = nil
+    end)
+end
+
 return M
