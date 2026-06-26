@@ -7,7 +7,7 @@ Vehicle title system for Project Zomboid Build 42. Claim vehicles into portable 
 | **Version** | 0.2.12 |
 | **Target build** | B42.0+ |
 | **Mod ID** | `IKappaIDPinkSlip` |
-| **Author** | IKappaID |
+| **Author** | IKappaID & Faded |
 | **Steam Workshop** | [3749738575](https://steamcommunity.com/sharedfiles/filedetails/?id=3749738575) |
 
 ## Overview
