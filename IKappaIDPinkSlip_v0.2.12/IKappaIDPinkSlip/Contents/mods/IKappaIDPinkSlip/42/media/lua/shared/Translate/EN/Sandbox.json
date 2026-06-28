@@ -1,0 +1,17 @@
+{
+    "Sandbox_IKappaIDPinkSlip": "IKappaID PinkSlip",
+    "Sandbox_IKappaIDPinkSlip_Enable": "Enable Pink Slip system",
+    "Sandbox_IKappaIDPinkSlip_MaxFilledSlipsPerPlayer": "Max filled slips per player",
+    "Sandbox_IKappaIDPinkSlip_ClaimDistance": "Claim distance",
+    "Sandbox_IKappaIDPinkSlip_RequireEmptyVehicle": "Require empty vehicle",
+    "Sandbox_IKappaIDPinkSlip_OwnerLockOnDeploy": "Require registered title owner",
+    "Sandbox_IKappaIDPinkSlip_ShowQuickButton": "Show quick deploy button",
+    "Sandbox_IKappaIDPinkSlip_MovableQuickButton": "Allow dragging quick deploy button",
+    "Sandbox_IKappaIDPinkSlip_Enable_tooltip": "Turns vehicle claim and deploy behavior on or off.",
+    "Sandbox_IKappaIDPinkSlip_MaxFilledSlipsPerPlayer_tooltip": "Limits how many filled Pink Slips one player can hold.",
+    "Sandbox_IKappaIDPinkSlip_ClaimDistance_tooltip": "Maximum distance, in tiles, from which a player can claim a vehicle.",
+    "Sandbox_IKappaIDPinkSlip_RequireEmptyVehicle_tooltip": "Prevents claiming a vehicle while another player is sitting in it.",
+    "Sandbox_IKappaIDPinkSlip_OwnerLockOnDeploy_tooltip": "Only the player registered on the filled Pink Slip can deploy it. Trade the slip, then the new holder can right-click it and register the title.",
+    "Sandbox_IKappaIDPinkSlip_ShowQuickButton_tooltip": "Shows the left-side Pink Slip quick deploy icon. Disabled by default.",
+    "Sandbox_IKappaIDPinkSlip_MovableQuickButton_tooltip": "When enabled, you can drag the quick deploy icon and its position is saved per player."
+}
